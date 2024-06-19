@@ -12,15 +12,13 @@ stateChange((userData) => {
     user.value = userData;
 })
 
-// console.log(user);
-
 </script>
 
 <template>
+    <AdminNavigation />
     <LoginForm v-if="!user" />
 
     <div v-else>
-        <AdminNavigation />
         <NewsletterEditor />
     </div>
 </template>

@@ -52,3 +52,5 @@ export const passwordReset = async (email) => {
 			alert("error sending password reset mail");
 		});
 };
+
+

@@ -8,7 +8,7 @@ const router = useRouter();
 const shouldNotRenderNavigationAndFooter = ref(false);
 
 watchEffect(() => {
-  shouldNotRenderNavigationAndFooter.value = ['/admin', '/admin-login'].includes(router.currentRoute.value.path);
+  shouldNotRenderNavigationAndFooter.value = ['/admin', '/controlpanel',].includes(router.currentRoute.value.path);
 });
 </script>
 

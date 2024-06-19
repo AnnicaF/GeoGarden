@@ -54,11 +54,19 @@ const router = createRouter({
       },
     },
     {
-      path: "/admin-login",
-      name: "admin-login",
+      path: "/admin",
+      name: "admin",
       component: () => import("../views/AdminView.vue"),
       meta: {
-        title: "admin-login",
+        title: "admin",
+      },
+    },
+    {
+      path: "/controlpanel",
+      name: "controlpanel",
+      component: () => import("../views/Controlpanel.vue"),
+      meta: {
+        title: "controlpanel",
       },
     },
     {

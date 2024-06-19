@@ -1,0 +1,25 @@
+@use "./global/fonts" as f;
+@use "./global/colors" as c;
+
+.admin-unit-container {
+    display: flex;
+    gap: 10px;
+    background-color: c.$grey;
+    padding: 10px;
+    align-items: center;
+    font-size: f.$body-text-desktop;
+    font-family: f.$secondary-font;
+    margin-bottom: 10px;
+
+    &__buttons {
+        display: flex;
+        gap: 10px;
+        margin-left: auto;
+        align-items: center;
+        
+        button {
+            font-size: f.$button-text;
+            cursor: pointer;
+        }
+    }
+}

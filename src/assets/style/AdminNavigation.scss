@@ -9,6 +9,12 @@ nav {
     align-items: center;
     justify-content: end;
     height: 50px;
+    gap: 10px;
+
+    .logged-in-as {
+        margin-right: auto;
+        color: white;
+    }
 
     button {
         padding: 5px 10px;
