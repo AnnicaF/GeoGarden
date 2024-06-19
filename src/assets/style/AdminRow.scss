@@ -7,19 +7,31 @@
     background-color: c.$grey;
     padding: 10px;
     align-items: center;
-    font-size: f.$body-text-desktop;
+    font-size: 14px;
     font-family: f.$secondary-font;
     margin-bottom: 10px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 
     &__buttons {
         display: flex;
         gap: 10px;
         margin-left: auto;
         align-items: center;
-        
+
         button {
-            font-size: f.$button-text;
+            border-style: none;
+            font-size: 14px;
             cursor: pointer;
+        }
+
+        &--edit {
+            color: yellowgreen;
+        }
+    
+        &--delete {
+            color: red;
         }
     }
 }

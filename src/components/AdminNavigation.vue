@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { onSignOut } from '../services/authService'; // Adjust this path according to your project structure
 
