@@ -35,7 +35,10 @@ const updateAdmin = (id, n, e, p, m) => {
         <p>{{ props.position }}</p>
         <p v-if="props.master">- &#128081;</p>
         <div class="admin-unit-container__buttons">
-            <button class="admin-unit-container__buttons--edit" :disabled="!admin.value" @click="updateAdmin(props.editId, props.name, props.email, props.position, props.master)">Edit</button>
+            <button class="admin-unit-container__buttons--edit" :disabled="!admin.value" 
+                @click="updateAdmin(props.editId, props.name, props.email, props.position, props.master)">
+                Edit
+            </button>
             <button class="admin-unit-container__buttons--delete" :disabled="!admin.value" @click="deleteAdmin(props.id)">Delete</button>
         </div>
     </li>
@@ -47,5 +50,5 @@ const updateAdmin = (id, n, e, p, m) => {
 button:disabled {
     opacity: 0.2;
 }
-
 </style>
+
