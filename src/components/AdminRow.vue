@@ -43,4 +43,9 @@ const updateAdmin = (id, n, e, p, m) => {
 
 <style>
 @import '@/assets/style/AdminRow.scss';
+
+button:disabled {
+    opacity: 0.2;
+}
+
 </style>

@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
+import { admin } from '../stores/store.js'
 
 const email = ref('');
 const password1 = ref('');
@@ -12,49 +13,49 @@ const position = ref('');
 const master = ref(false);
 
 const dummyUsers = [
-    { email: 'user1@geogarden.dk', name: 'User One', position: 'Admin' },
-    { email: 'user2@geogarden.dk', name: 'User Two', position: 'Admin' },
-    { email: 'user3@geogarden.dk', name: 'User Three', position: 'Admin' },
-    { email: 'user4@geogarden.dk', name: 'User Four', position: 'Admin' },
-    { email: 'user5@geogarden.dk', name: 'User Five', position: 'Admin' },
-    { email: 'user6@geogarden.dk', name: 'User Six', position: 'Admin' },
-    { email: 'user7@geogarden.dk', name: 'User Seven', position: 'Admin' },
-    { email: 'user8@geogarden.dk', name: 'User Eight', position: 'Admin' },
-    { email: 'user9@geogarden.dk', name: 'User Nine', position: 'Admin' },
-    { email: 'user10@geogarden.dk', name: 'User Ten', position: 'Admin' },
+    { email: 'mn@geografiskhave.dk', name: 'Morten Nielsen', position: 'Park Manager' },
+    { email: 'sa@geografiskhave.dk', name: 'Sofie Andersen', position: 'Botanist' },
+    { email: 'lj@geografiskhave.dk', name: 'Lars Jensen', position: 'Horticulturist' },
+    { email: 'eh@geografiskhave.dk', name: 'Emilie Hansen', position: 'Garden Designer' },
+    { email: 'kp@geografiskhave.dk', name: 'Kasper Pedersen', position: 'Groundskeeper' },
+    { email: 'ar@geografiskhave.dk', name: 'Anna Rasmussen', position: 'Event Coordinator' },
+    { email: 'hk@geografiskhave.dk', name: 'Henrik Kristensen', position: 'Plant Pathologist' },
+    { email: 'jm@geografiskhave.dk', name: 'Julie Madsen', position: 'Educational Officer' },
+    { email: 'fs@geografiskhave.dk', name: 'Frederik Sørensen', position: 'Greenhouse Manager' },
+    { email: 'ct@geografiskhave.dk', name: 'Camilla Thomsen', position: 'Visitor Services Manager' },
 ];
 
-const createDummyUsers = async () => {
 
-    return 
+// const createDummyUsers = async () => {
 
-    const auth = getAuth();
-    const password = 'password123';
 
-    try {
-        for (let i = 0; i < dummyUsers.length; i++) {
-            const userData = dummyUsers[i];
-            const userCredential = await createUserWithEmailAndPassword(auth, userData.email, password);
-            const user = userCredential.user;
+//     const auth = getAuth();
+//     const password = 'password123';
 
-            await addDoc(collection(db, 'adminUsers'), {
-                uid: user.uid,
-                name: userData.name,
-                position: userData.position,
-                email: userData.email,
-                master: i < 3 // Assign the first 3 users as masters
-            });
+//     try {
+//         for (let i = 0; i < dummyUsers.length; i++) {
+//             const userData = dummyUsers[i];
+//             const userCredential = await createUserWithEmailAndPassword(auth, userData.email, password);
+//             const user = userCredential.user;
 
-            console.log(`User created: ${userData.email}`);
-        }
-        console.log('All dummy users created successfully.');
-    } catch (error) {
-        console.error('Error creating dummy users:', error.message);
-        alert(`Error creating dummy users: ${error.message}`);
-    }
-};
+//             await addDoc(collection(db, 'adminUsers'), {
+//                 uid: user.uid,
+//                 name: userData.name,
+//                 position: userData.position,
+//                 email: userData.email,
+//                 master: i < 3 // Assign the first 3 users as masters
+//             });
 
-onMounted(createDummyUsers);
+//             console.log(`User created: ${userData.email}`);
+//         }
+//         console.log('All dummy users created successfully.');
+//     } catch (error) {
+//         console.error('Error creating dummy users:', error.message);
+//         alert(`Error creating dummy users: ${error.message}`);
+//     }
+// };
+
+// onMounted(createDummyUsers);
 
 const handleSubmit = async () => {
     const confirmed = confirm(`Are you sure you want to create an admin with email: ${email.value}?`);
@@ -109,7 +110,7 @@ const handleSubmit = async () => {
             <input v-model="master" type="checkbox" class="form-container__checkbox">
             Master
         </label>
-        <button type="submit">Create</button>
+        <button :disabled="!admin.value" type="submit">Create</button>
     </form>
 </template>
 

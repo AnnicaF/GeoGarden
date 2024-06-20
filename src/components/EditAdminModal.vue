@@ -48,7 +48,7 @@ const updateAdmin = async () => {
 <template>
     <div class="dialog-overlay" v-if="modal.modalValue">
         <dialog open>
-            <button class="close-button" @click="closeModal">Close</button>
+            <button class="close-button" @click="closeModal">&#x2715;</button>
             <form @submit.prevent="updateAdmin">
                 <div class="edit-input-container">
                     <input type="text" v-model="nameInEdit" placeholder="Name">
@@ -58,7 +58,7 @@ const updateAdmin = async () => {
                         <input type="checkbox" v-model="masterInEdit"> Master
                     </label>
                 </div>
-                <button type="submit">Update</button>
+                <button class="submit-button" type="submit">Update</button>
             </form>
         </dialog>
     </div>
@@ -67,6 +67,28 @@ const updateAdmin = async () => {
 <style lang="scss">
 .close-button {
     margin-left: auto;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: #00000000;
+    border-style: none;
+    font-size: 20px;
+}
+
+.submit-button {
+    margin-left: auto;
+    cursor: pointer;
+    padding: 5px 15px;
+    background-color: green;
+    color: white;
+    border-color: green;
+    border-style: solid;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: #00000000;
+        transition: 0.2s;
+        color: green;
+    }
 }
 
 .dialog-overlay {
@@ -92,6 +114,11 @@ dialog {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin-left: auto;
     margin-right: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 .edit-input-container {
